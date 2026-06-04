@@ -4,9 +4,14 @@ import { Link } from 'react-router-dom';
 import { useRef, useState, useEffect } from 'react';
 import PageTransition from '../components/PageTransition';
 import heroImage from '../assets/hero.jpg';
+import moment1 from '../assets/moment-1.jpg';
+import moment2 from '../assets/moment-2.jpg';
+import moment3 from '../assets/moment-3.jpg';
+import moment4 from '../assets/moment-4.jpg';
 import work1 from '../assets/work-1.jpg';
 import work2 from '../assets/work-2.jpg';
 import work3 from '../assets/work-3.jpg';
+import growthSnapshot from '../assets/growth-snapshot.jpg';
 
 function useCountUp(end: number, inView: boolean, duration = 2000) {
   const [val, setVal] = useState(0);
@@ -197,71 +202,37 @@ export default function Home() {
             </Link>
           </div>
 
-          {/* Asymmetric grid: large left + two stacked right */}
+          {/* Editorial mosaic — alternating feature tiles */}
           <div className="grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-5">
-
-            {/* Large feature image — left */}
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.7 }}
-              className="md:col-span-7 group relative rounded-[2rem] overflow-hidden aspect-[4/5] md:aspect-auto md:h-[680px]"
-            >
-              <img
-                src={work1}
-                alt="Client photography"
-                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.04]"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-brand-green/70 via-brand-green/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-              <div className="absolute bottom-0 left-0 p-8 translate-y-3 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500">
-                <span className="text-brand-gold text-xs uppercase tracking-[0.25em] font-bold block mb-1">Photography</span>
-                <p className="text-brand-cream font-serif text-2xl italic">Creative Direction</p>
-              </div>
-            </motion.div>
-
-            {/* Two stacked images — right */}
-            <div className="md:col-span-5 grid grid-rows-2 gap-4 md:gap-5 md:h-[680px]">
-
+            {[
+              { src: moment1, span: 'md:col-span-8', tag: 'Event Photography', label: 'The Celebration' },
+              { src: moment2, span: 'md:col-span-4', tag: 'Event Photography', label: 'The Couple' },
+              { src: moment3, span: 'md:col-span-4', tag: 'Event Photography', label: 'Togetherness' },
+              { src: moment4, span: 'md:col-span-8', tag: 'Event Photography', label: 'Grand Entrance' },
+              { src: work1,   span: 'md:col-span-4', tag: 'Photography',       label: 'Creative Direction' },
+              { src: work2,   span: 'md:col-span-4', tag: 'Photography',       label: 'Portrait' },
+              { src: work3,   span: 'md:col-span-4', tag: 'Photography',       label: 'Editorial' },
+            ].map((m, i) => (
               <motion.div
+                key={i}
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.7, delay: 0.15 }}
-                className="group relative rounded-[2rem] overflow-hidden aspect-square md:aspect-auto"
+                transition={{ duration: 0.7, delay: (i % 2) * 0.15 }}
+                className={`${m.span} group relative rounded-[2rem] overflow-hidden aspect-[3/2] md:aspect-auto md:h-[360px]`}
               >
                 <img
-                  src={work2}
-                  alt="Client photography"
+                  src={m.src}
+                  alt={m.label}
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.04]"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-brand-green/70 via-brand-green/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                <div className="absolute bottom-0 left-0 p-6 translate-y-3 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500">
-                  <span className="text-brand-gold text-xs uppercase tracking-[0.25em] font-bold block mb-1">Photography</span>
-                  <p className="text-brand-cream font-serif text-xl italic">Portrait</p>
+                <div className="absolute bottom-0 left-0 p-6 md:p-8 translate-y-3 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500">
+                  <span className="text-brand-gold text-xs uppercase tracking-[0.25em] font-bold block mb-1">{m.tag}</span>
+                  <p className="text-brand-cream font-serif text-xl md:text-2xl italic">{m.label}</p>
                 </div>
               </motion.div>
-
-              <motion.div
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.7, delay: 0.3 }}
-                className="group relative rounded-[2rem] overflow-hidden aspect-square md:aspect-auto"
-              >
-                <img
-                  src={work3}
-                  alt="Client photography"
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.04]"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-brand-green/70 via-brand-green/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                <div className="absolute bottom-0 left-0 p-6 translate-y-3 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500">
-                  <span className="text-brand-gold text-xs uppercase tracking-[0.25em] font-bold block mb-1">Photography</span>
-                  <p className="text-brand-cream font-serif text-xl italic">Editorial</p>
-                </div>
-              </motion.div>
-
-            </div>
+            ))}
           </div>
         </div>
       </section>
@@ -284,19 +255,40 @@ export default function Home() {
             </div>
           </div>
 
-          {/* Featured views metric */}
-          <div className="border-b border-brand-cream/10 pb-12 mb-12">
-            <p className="text-brand-cream/40 text-xs uppercase tracking-[0.2em] font-bold mb-4">Total Views</p>
-            <div className="flex flex-col md:flex-row md:items-end gap-6">
-              <span className="text-7xl md:text-[8rem] font-serif leading-none tabular-nums">
-                {views.toLocaleString()}
-              </span>
-              <div className="flex flex-col gap-3 md:mb-4">
-                <div className="inline-flex items-center gap-2 bg-brand-gold/15 border border-brand-gold/25 rounded-full px-4 py-2 w-fit">
-                  <TrendingUp className="w-4 h-4 text-brand-gold" />
-                  <span className="text-brand-gold text-xs font-bold uppercase tracking-widest">Trending Up</span>
+          {/* Featured views metric + growth snapshot */}
+          <div className="grid md:grid-cols-2 gap-10 md:gap-16 items-center border-b border-brand-cream/10 pb-12 mb-12">
+
+            {/* Growth snapshot visual */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.7 }}
+              className="relative mx-auto w-full max-w-sm md:order-2"
+            >
+              <div className="absolute -inset-4 bg-brand-gold/10 blur-3xl rounded-[3rem]" aria-hidden />
+              <img
+                src={growthSnapshot}
+                alt="Client growth snapshot — Instagram professional dashboard insights"
+                className="relative w-full rounded-[1.75rem] ring-1 ring-brand-cream/15 shadow-2xl"
+              />
+              <p className="relative text-center text-brand-cream/30 text-xs uppercase tracking-[0.2em] font-bold mt-5">Client Growth Snapshot</p>
+            </motion.div>
+
+            {/* Total views */}
+            <div className="md:order-1">
+              <p className="text-brand-cream/40 text-xs uppercase tracking-[0.2em] font-bold mb-4">Total Views</p>
+              <div className="flex flex-col md:flex-row md:items-end gap-6">
+                <span className="text-7xl md:text-[8rem] font-serif leading-none tabular-nums">
+                  {views.toLocaleString()}
+                </span>
+                <div className="flex flex-col gap-3 md:mb-4">
+                  <div className="inline-flex items-center gap-2 bg-brand-gold/15 border border-brand-gold/25 rounded-full px-4 py-2 w-fit">
+                    <TrendingUp className="w-4 h-4 text-brand-gold" />
+                    <span className="text-brand-gold text-xs font-bold uppercase tracking-widest">Trending Up</span>
+                  </div>
+                  <p className="text-brand-cream/35 text-sm">82.8% from ads · 17.2% organic</p>
                 </div>
-                <p className="text-brand-cream/35 text-sm">82.8% from ads · 17.2% organic</p>
               </div>
             </div>
           </div>
