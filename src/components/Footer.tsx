@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import { Instagram, Twitter, Linkedin, ArrowUp } from 'lucide-react';
+import logoMarkCream from '../assets/logo-mark-cream.png';
 
 export default function Footer() {
   const scrollToTop = () => {
@@ -11,10 +12,12 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-10 md:gap-16 mb-12 md:mb-24">
           <div className="col-span-1 md:col-span-2">
-            <Link to="/" className="flex items-center gap-2 mb-8">
-              <div className="w-10 h-10 bg-brand-gold rounded-full flex items-center justify-center overflow-hidden">
-                <span className="text-brand-green font-serif text-xl font-bold">J</span>
-              </div>
+            <Link to="/" className="flex items-center gap-3 mb-8 group w-fit">
+              <img
+                src={logoMarkCream}
+                alt="Johäverse"
+                className="w-12 h-12 object-contain transition-transform duration-300 group-hover:scale-105"
+              />
               <span className="text-3xl font-serif font-semibold tracking-tight">
                 Johaverse
               </span>

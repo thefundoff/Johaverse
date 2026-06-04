@@ -2,6 +2,8 @@ import { motion } from 'motion/react';
 import { Link, useLocation } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
+import logoMark from '../assets/logo-mark.png';
+import logoMarkCream from '../assets/logo-mark-cream.png';
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -28,10 +30,12 @@ export default function Navbar() {
       }`}
     >
       <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
-        <Link to="/" className="flex items-center gap-2">
-          <div className={`w-10 h-10 rounded-full flex items-center justify-center overflow-hidden transition-all duration-300 ${scrolled ? 'bg-brand-green' : 'bg-brand-cream'}`}>
-            <span className={`font-serif text-xl font-bold transition-colors duration-300 ${scrolled ? 'text-brand-cream' : 'text-brand-green'}`}>J</span>
-          </div>
+        <Link to="/" className="flex items-center gap-2.5 group">
+          <img
+            src={scrolled ? logoMark : logoMarkCream}
+            alt="Johäverse"
+            className="w-10 h-10 object-contain transition-all duration-300 group-hover:scale-105"
+          />
           <span className={`text-2xl font-serif font-semibold tracking-tight transition-colors duration-300 ${scrolled ? 'text-brand-green' : 'text-brand-cream'}`}>
             Johaverse
           </span>

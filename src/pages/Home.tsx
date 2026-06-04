@@ -12,6 +12,7 @@ import work1 from '../assets/work-1.jpg';
 import work2 from '../assets/work-2.jpg';
 import work3 from '../assets/work-3.jpg';
 import growthSnapshot from '../assets/growth-snapshot.jpg';
+import logoLockupCream from '../assets/logo-lockup-cream.png';
 
 function useCountUp(end: number, inView: boolean, duration = 2000) {
   const [val, setVal] = useState(0);
@@ -87,8 +88,16 @@ export default function Home() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="max-w-6xl relative z-10"
+          className="max-w-6xl relative z-10 flex flex-col items-center"
         >
+          <motion.img
+            src={logoLockupCream}
+            alt="Johäverse"
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.9 }}
+            className="w-44 sm:w-52 md:w-64 h-auto object-contain mb-8 md:mb-12 drop-shadow-[0_4px_20px_rgba(0,0,0,0.25)]"
+          />
           <h1 className="text-[2.5rem] sm:text-[3.5rem] md:text-[9.5rem] font-serif text-brand-cream mb-6 md:mb-8 leading-[0.9] md:leading-[0.85] tracking-tight text-balance">
             We Build Visual <span className="italic text-brand-gold">Experiences</span><br className="hidden md:block" /> for Modern Brands.
           </h1>
