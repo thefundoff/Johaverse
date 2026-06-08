@@ -51,9 +51,9 @@ export default function Footer() {
           <div>
             <h4 className="text-xs uppercase tracking-[0.2em] font-bold text-brand-gold mb-8">Contact</h4>
             <ul className="space-y-4 text-brand-cream/70">
-              <li>yechibrown@gmail.com</li>
+              <li>thejohaverse@gmail.com</li>
               <li>Abuja, Nigeria</li>
-              <li>+234 805 695 0631</li>
+              <li>+234 913 177 6720</li>
             </ul>
           </div>
         </div>

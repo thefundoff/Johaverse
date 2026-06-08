@@ -3,6 +3,7 @@ import PageTransition from '../components/PageTransition';
 import { Sparkles, Compass, Focus, Goal } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import founderImage from '../assets/founder.jpg';
+import creativeJourneyImage from '../assets/creative-journey.jpg';
 
 export default function About() {
   const approaches = [
@@ -33,11 +34,11 @@ export default function About() {
           <div className="relative">
             {/* Offset decorative frame */}
             <div className="absolute -bottom-4 -right-4 w-full h-full rounded-3xl border border-brand-gold/30" />
-            <div className="aspect-square rounded-3xl overflow-hidden shadow-2xl shadow-brand-green/10">
+            <div className="aspect-[3/2] rounded-3xl overflow-hidden shadow-2xl shadow-brand-green/10">
               <img
-                src={founderImage}
+                src={creativeJourneyImage}
                 alt="Johaverse Founder"
-                className="w-full h-full object-cover object-top"
+                className="w-full h-full object-cover object-center"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-brand-green/20 to-transparent" />
             </div>

@@ -140,7 +140,7 @@ export default function Home() {
             >
               {/* Replace with Founder image if available */}
               <div className="absolute inset-0 flex items-center justify-center text-brand-gold font-serif text-2xl italic p-12 text-center">
-                "We don’t just create content — we craft experiences."
+                “Your creative media multiverse…”
               </div>
             </motion.div>
             <motion.div
